@@ -9,28 +9,9 @@
     tools:showIn="@layout/activity_settings">
 
     <TextView
-        android:id="@+id/alipayHomeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="->支付宝主页"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/alipayHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/alipayHomeLabel"
-        android:layout_toEndOf="@id/alipayHomeLabel"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
         android:id="@+id/forestHomeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/alipayHomeLabel"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="->蚂蚁森林主页"

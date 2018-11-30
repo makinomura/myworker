@@ -19,7 +19,6 @@ import java.lang.String.format
 
 class SettingsActivity : AppCompatActivity() {
 
-    lateinit var alipayHome: EditText
     lateinit var forestHome: EditText
     lateinit var friendRank: EditText
     lateinit var friendHome: EditText
@@ -30,13 +29,11 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        alipayHome = findViewById(R.id.alipayHome)
         forestHome = findViewById(R.id.forestHome)
         friendRank = findViewById(R.id.friendRank)
         friendHome = findViewById(R.id.friendHome)
 
         conf = Conf.read(getSharedPreferences("conf", Context.MODE_APPEND))
-        alipayHome.setText(conf.alipayHomeWait.toString())
         forestHome.setText(conf.forestHomeWait.toString())
         friendRank.setText(conf.friendRankWait.toString())
         friendHome.setText(conf.friendHomeWait.toString())

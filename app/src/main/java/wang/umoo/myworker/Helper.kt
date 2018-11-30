@@ -1,8 +1,5 @@
 package wang.umoo.myworker
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Context.MODE_APPEND
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -18,16 +15,13 @@ import java.util.function.IntPredicate
 
 object Helper {
 
-    val FOREST_KEY_MAP_PATH = Environment.getExternalStorageDirectory().absolutePath + "/myworker/keys/forest_key.png"
+//    val FOREST_KEY_MAP_PATH = Environment.getExternalStorageDirectory().absolutePath + "/myworker/keys/forest_key.png"
     //    public final static String ENERGY_KEY_MAP_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/myworker/keys/energy_key.png";
-    val FRIEND_KEY_MAP_PATH = Environment.getExternalStorageDirectory().absolutePath + "/myworker/keys/friend_key.png"
+//    val FRIEND_KEY_MAP_PATH = Environment.getExternalStorageDirectory().absolutePath + "/myworker/keys/friend_key.png"
 
     val ALIPAY_PACKAGE_NAME = "com.eg.android.AlipayGphone"
     val ALIPAY_HOME_NAME = "com.eg.android.AlipayGphone.AlipayLogin"
     val ALIPAY_H5_NAME = "com.alipay.mobile.nebulacore.ui.H5Activity"
-
-    val friendPoints: List<Point>
-        get() = compareBM(Helper.screenShot, FRIEND_KEY_MAP_PATH)
 
 
     fun recognizeKeyPoints(conf: RecognizeConf): List<Point> {
@@ -121,27 +115,6 @@ object Helper {
 
     val isAlipayH5Top: Boolean
         get() = isTop(ALIPAY_H5_NAME)
-
-    fun getForestPoint(context: Context): Point? {
-
-        @SuppressLint("WrongConstant") val conf = context.getSharedPreferences("conf", MODE_APPEND)
-
-        val forestPoint = conf.getString("forest_point", "")
-        var point: Point? = null
-        if (forestPoint!!.contains(",")) {
-            val split = forestPoint.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            point = Point(Integer.parseInt(split[0]), Integer.parseInt(split[1]))
-        } else {
-            val forestPoints = compareBM(Helper.screenShot, FOREST_KEY_MAP_PATH)
-
-            if (!forestPoints.isEmpty()) {
-                point = forestPoints[0]
-                conf.edit().putString("forest_point", String.format("%d,%d", point.x, point.y)).apply()
-            }
-        }
-
-        return point
-    }
 
     fun compareBM(imagePath: String?, keyPath: String): List<Point> {
 
@@ -305,9 +278,6 @@ object Helper {
                         total++
                     }
                 }
-
-//                Log.d("p", "Point $keyPoint Rate ${match * 1f / total}")
-
 
                 if (match * 1f / total >= conf.trustRate) {
                     result.add(keyPoint)

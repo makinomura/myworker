@@ -7,37 +7,24 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.BitmapFactory
+import android.os.Environment
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.widget.Toast
 
 class CollectService : Service() {
+    override fun onBind(intent: Intent?): IBinder? = null
 
     private val lock = Any()
     private var worker: Thread? = null
     private val handler = Handler(Looper.getMainLooper())
 
-    override fun onCreate() {
-        super.onCreate()
-
-
-        val filter = IntentFilter()
-        filter.addAction("android.media.VOLUME_CHANGED_ACTION")
-
-        registerReceiver(vbr, filter)
-    }
-
     override fun onDestroy() {
         super.onDestroy()
 
-        unregisterReceiver(vbr)
-    }
-
-    override fun onBind(intent: Intent): IBinder? {
-        return null
+        Helper.deleteFile(Environment.getExternalStorageDirectory().absolutePath + "/myworker/myi_*.png")
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
@@ -106,12 +93,6 @@ class CollectService : Service() {
                 Thread.sleep(500)
                 toast("进入支付宝")
 
-//                val alipayIntent = packageManager.getLaunchIntentForPackage(Helper.ALIPAY_PACKAGE_NAME)
-//                if (alipayIntent != null) {
-//                    alipayIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//                    startActivity(alipayIntent)
-//                }
-
                 Helper.openForestHome()
 
                 var wait = 0
@@ -124,7 +105,6 @@ class CollectService : Service() {
                         throw InterruptedException("无法进入蚂蚁森林")
                     }
                 }
-
 
                 checkState()
                 Thread.sleep(conf.forestHomeWait)
@@ -190,7 +170,6 @@ class CollectService : Service() {
     }
 
     companion object {
-        private val vbr = VolumeBroadcastReceiver()
 
         fun begin(context: Context) {
             val service = Intent(context, CollectService::class.java)
