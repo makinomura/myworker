@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SettingsActivity"
+    tools:showIn="@layout/activity_settings">
+
+    <TextView
+        android:id="@+id/alipayHomeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="->支付宝主页"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/alipayHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/alipayHomeLabel"
+        android:layout_toEndOf="@id/alipayHomeLabel"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/forestHomeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alipayHomeLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="->蚂蚁森林主页"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/forestHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/forestHomeLabel"
+        android:layout_toEndOf="@id/forestHomeLabel"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/friendRankLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forestHomeLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="->好友排行榜"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/friendRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/friendRankLabel"
+        android:layout_toEndOf="@id/friendRankLabel"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/friendHomeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friendRankLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="->好友主页"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/friendHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/friendHomeLabel"
+        android:layout_toEndOf="@id/friendHomeLabel"
+        android:ems="10"
+        android:inputType="number" />
+
+</RelativeLayout>
